@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEASONALITY TERMINAL</title>
+<style>
+  :root{
+    --bg:#07090b;--panel:#0d1117;--panel2:#11171f;--line:#1c2632;
+    --pos:#39ff7a;--pos-dim:#1f7a42;--neg:#ff4d5e;--neg-dim:#8a2b34;
+    --amber:#ffb238;--spot:#3da9ff;--txt:#cdd9e5;--txt-dim:#5b6b7c;
+    --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--txt);font-family:var(--mono);
+    font-size:14px;line-height:1.5;padding:18px 18px 60px;
+    background-image:radial-gradient(circle at 20% 0%,rgba(57,255,122,.04),transparent 40%);
+  }
+  header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+         border-bottom:1px solid var(--line);padding-bottom:12px}
+  h1{font-size:20px;font-weight:700;letter-spacing:3px;color:var(--pos);
+     text-shadow:0 0 12px rgba(57,255,122,.4)}
+  .sub{color:var(--txt-dim);font-size:11px;letter-spacing:1px}
+  nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+  nav a{color:var(--txt-dim);font-size:11px;text-decoration:none;padding:5px 10px;
+        border:1px solid var(--line);border-radius:4px;transition:.15s;letter-spacing:.5px}
+  nav a:hover{border-color:var(--pos);color:var(--pos)}
+  nav a.active{color:var(--pos);border-color:var(--pos-dim);background:rgba(57,255,122,.06)}
+  .meta{width:100%;color:var(--txt-dim);font-size:11px;margin-top:4px}
+  .meta b{color:var(--txt)}
+
+  .bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0;font-size:11px;color:var(--txt-dim)}
+  .controls{margin-left:auto;display:flex;gap:8px;align-items:center}
+  select,button{background:var(--panel);color:var(--txt);border:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;padding:6px 9px;border-radius:4px}
+  button{cursor:pointer;transition:.15s}
+  button:hover{border-color:var(--pos);color:var(--pos)}
+  select:focus{outline:none;border-color:var(--pos)}
+
+  .legend{display:flex;align-items:center;gap:5px}
+  .sw{width:11px;height:11px;border-radius:2px;display:inline-block}
+
+  h2{font-size:13px;letter-spacing:2px;color:var(--txt-dim);margin:22px 0 10px;font-weight:700}
+
+  /* current window strip */
+  .window{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+  .wd{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:10px;text-align:center}
+  .wd .dl{font-size:11px;color:var(--txt-dim);margin-bottom:6px}
+  .wd .wr{font-size:22px;font-weight:700;line-height:1}
+  .wd .ar{font-size:10px;color:var(--txt-dim);margin-top:5px}
+  .wd.today{border-color:var(--spot);box-shadow:0 0 10px rgba(61,169,255,.25)}
+  .wd.today .dl{color:var(--spot)}
+
+  /* monthly grid */
+  .months{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+  .mo{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:12px;border-left:3px solid var(--line)}
+  .mo .mh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .mo .mn{font-size:14px;font-weight:700;letter-spacing:1px}
+  .mo .wr{font-size:13px;font-weight:700}
+  .mo .row{display:flex;justify-content:space-between;font-size:10px;color:var(--txt-dim);padding:2px 0}
+  .mo .row b{color:var(--txt)}
+  .mo .bar-bg{height:6px;background:var(--panel2);border-radius:3px;overflow:hidden;margin:6px 0 8px}
+  .mo .bar-fill{height:100%;border-radius:3px}
+
+  footer{margin-top:24px;border-top:1px solid var(--line);padding-top:10px;font-size:10px;color:var(--txt-dim);line-height:1.7}
+  .empty{color:var(--txt-dim);padding:40px;text-align:center}
+  @media(max-width:600px){nav{width:100%;margin-left:0}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SEASONALITY</h1>
+  <span class="sub">historical calendar bias</span>
+  <nav>
+    <a href="../em-tracker/dashboard.html">EM</a>
+    <a href="../gex-tracker/dashboard.html">GEX</a>
+    <a href="../ninja-system/system.html">System</a>
+    <a href="../ninja-system/checklist.html">Checklist</a>
+    <a href="dashboard.html" class="active">Seasonality</a>
+  </nav>
+  <div class="meta" id="meta">loading…</div>
+</header>
+
+<div class="bar">
+  <div class="legend"><span class="sw" style="background:var(--pos)"></span>≥60% green</div>
+  <div class="legend"><span class="sw" style="background:var(--amber)"></span>45–60%</div>
+  <div class="legend"><span class="sw" style="background:var(--neg)"></span>&lt;45% green</div>
+  <div class="controls">
+    <select id="ticker"></select>
+    <button id="refresh">↻ refresh</button>
+  </div>
+</div>
+
+<h2 id="winTitle">CURRENT WINDOW · NEXT TRADING DAYS</h2>
+<div class="window" id="window"><div class="empty">loading…</div></div>
+
+<h2>MONTHLY SEASONALITY</h2>
+<div class="months" id="months"><div class="empty">loading…</div></div>
+
+<footer id="foot"></footer>
+
+<script>
+  const JSON_URL = 'https://raw.githubusercontent.com/marquisbware-sys/seasonality-tracker/main/seasonality_data.json';
+  let RAW=null, current=null;
+
+  function colorFor(wr){
+    if(wr==null) return 'var(--txt-dim)';
+    if(wr>=60) return 'var(--pos)';
+    if(wr>=45) return 'var(--amber)';
+    return 'var(--neg)';
+  }
+  function fmt(n,d=1){ return n==null?'—':Number(n).toFixed(d); }
+
+  function renderWindow(t){
+    const win=t.daily_window||[];
+    const el=document.getElementById('window');
+    if(!win.length){ el.innerHTML='<div class="empty">No window data.</div>'; return; }
+    const today=new Date().toISOString().slice(0,10);
+    el.innerHTML=win.map(w=>{
+      const c=colorFor(w.win_rate);
+      const isToday=w.date===today?' today':'';
+      return `<div class="wd${isToday}">
+        <div class="dl">${w.label}</div>
+        <div class="wr" style="color:${c}">${fmt(w.win_rate)}%</div>
+        <div class="ar">avg ${w.avg_return>0?'+':''}${fmt(w.avg_return,2)}% · ${w.n}y</div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderMonths(t){
+    const months=t.monthly||[];
+    const el=document.getElementById('months');
+    const valid=months.filter(m=>m.n);
+    if(!valid.length){ el.innerHTML='<div class="empty">No monthly data.</div>'; return; }
+    el.innerHTML=months.map(m=>{
+      if(!m.n) return '';
+      const c=colorFor(m.win_rate);
+      return `<div class="mo" style="border-left-color:${c}">
+        <div class="mh"><span class="mn">${m.month}</span>
+          <span class="wr" style="color:${c}">${fmt(m.win_rate)}%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${m.win_rate}%;background:${c}"></div></div>
+        <div class="row"><span>avg return</span><b style="color:${m.avg_return>=0?'var(--pos)':'var(--neg)'}">${m.avg_return>0?'+':''}${fmt(m.avg_return,2)}%</b></div>
+        <div class="row"><span>best</span><b>${m.best.year} +${fmt(m.best.ret)}%</b></div>
+        <div class="row"><span>worst</span><b>${m.worst.year} ${fmt(m.worst.ret)}%</b></div>
+        <div class="row"><span>sample</span><b>${m.n} yrs</b></div>
+      </div>`;
+    }).join('');
+  }
+
+  function render(){
+    if(!RAW||!current) return;
+    const t=RAW.tickers[current];
+    if(!t) return;
+    renderWindow(t); renderMonths(t);
+    document.getElementById('foot').innerHTML=
+      `<b>method:</b> ${RAW.method||''}<br>`
+      +`<b>${current}</b> · data ${t.data_start} → ${t.data_end} · `
+      +`${RAW.note||''}`;
+  }
+
+  async function load(){
+    try{
+      const res=await fetch(JSON_URL+'?t='+Date.now());
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      RAW=await res.json();
+      const names=Object.keys(RAW.tickers||{});
+      const sel=document.getElementById('ticker');
+      sel.innerHTML=names.map(n=>`<option>${n}</option>`).join('');
+      current=names[0]||null;
+      document.getElementById('meta').innerHTML=
+        `<b>${names.length}</b> tickers · updated <b>${RAW.generated_utc||'—'}</b>`;
+      render();
+    }catch(e){
+      document.getElementById('window').innerHTML=
+        `<div class="empty">Could not load data.<br>${e.message}<br><br>Run the workflow once, then hard-refresh.</div>`;
+      document.getElementById('months').innerHTML='';
+      document.getElementById('meta').textContent='load error';
+    }
+  }
+
+  document.getElementById('ticker').addEventListener('change',e=>{current=e.target.value;render();});
+  document.getElementById('refresh').addEventListener('click',load);
+  load();
+</script>
+</body>
+</html>
