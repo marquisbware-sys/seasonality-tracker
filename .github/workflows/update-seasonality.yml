@@ -26,6 +26,8 @@ jobs:
         run: pip install requests
 
       - name: Run seasonality calculator
+        env:
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
         run: python calculate_seasonality.py
 
       - name: Commit results
