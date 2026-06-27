@@ -1,8 +1,8 @@
 """
 Seasonality Calculator
 ======================
-Pulls ~20 years of free daily history from Stooq (no API key, no rate limit)
-and computes seasonal statistics for a watchlist:
+Pulls ~20 years of daily history from Twelve Data (free tier, works from
+GitHub Actions) and computes seasonal statistics for a watchlist.
 
   MONTHLY VIEW
     - For each calendar month: % of years that month closed green,
@@ -12,18 +12,21 @@ and computes seasonal statistics for a watchlist:
     - For each trading day of the year (by month/day-of-month bucket):
       % of years that day closed green, average return.
     - Also a "current window" read: the next ~10 trading days from today,
-      with their historical bullish probability, so you can see what the
-      calendar favors right now.
+      with their historical bullish probability.
 
 Seasonality is a PROBABILISTIC bias, not a signal. It describes historical
 tendency for a period, which breaks in unusual years. Use as a confluence
 factor alongside price action, GEX, and expected move — never standalone.
 
+DATA SOURCE: Twelve Data (https://twelvedata.com). Requires a free API key,
+read from the TWELVE_DATA_KEY environment variable (set as a GitHub Secret).
+Free tier: 800 calls/day, 8 calls/minute — so we space requests out.
+
 Output: writes seasonality_data.json to the repo root.
 """
 
 import json
-import io
+import os
 import time
 from datetime import datetime, timezone, timedelta
 
@@ -33,28 +36,16 @@ import requests
 # CONFIG
 # ----------------------------------------------------------------------------
 
-# Stooq symbols. US tickers use the .US suffix; indices use ^ codes.
-# We map a clean display name -> Stooq symbol.
-WATCHLIST = {
-    "SPY":  "spy.us",
-    "QQQ":  "qqq.us",
-    "IWM":  "iwm.us",
-    "DIA":  "dia.us",
-    "TSLA": "tsla.us",
-    "NVDA": "nvda.us",
-    "AAPL": "aapl.us",
-    "MSFT": "msft.us",
-    "AMZN": "amzn.us",
-    "META": "meta.us",
-}
+# Twelve Data uses plain ticker symbols.
+WATCHLIST = ["SPY", "QQQ", "IWM", "DIA", "TSLA",
+             "NVDA", "AAPL", "MSFT", "AMZN", "META"]
 
 YEARS_BACK = 20
-STOOQ_URL = "https://stooq.com/q/d/l/?s={sym}&i=d"
+API_KEY = os.environ.get("TWELVE_DATA_KEY", "").strip()
+TD_URL = "https://api.twelvedata.com/time_series"
 
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                  "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-}
+# Free tier allows 8 requests/minute. We pause ~9s between calls to stay safe.
+SECONDS_BETWEEN_CALLS = 9
 
 MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -64,35 +55,52 @@ MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 # DATA FETCH
 # ----------------------------------------------------------------------------
 
-def fetch_history(stooq_sym):
+def fetch_history(symbol):
     """Return list of (date, close) tuples, oldest first, or None."""
-    url = STOOQ_URL.format(sym=stooq_sym)
+    params = {
+        "symbol": symbol,
+        "interval": "1day",
+        "outputsize": "5000",   # max; ~20 years of trading days
+        "apikey": API_KEY,
+        "format": "JSON",
+        "order": "ASC",         # oldest first
+    }
     for attempt in range(3):
         try:
-            r = requests.get(url, headers=HEADERS, timeout=30)
-            if r.status_code == 200 and "Date,Open" in r.text[:60]:
-                return parse_csv(r.text)
-            # Stooq returns "No data" plain text when symbol is wrong/empty
+            r = requests.get(TD_URL, params=params, timeout=30)
+            if r.status_code == 200:
+                data = r.json()
+                # Rate-limit or error responses come back as {"code":..,"status":"error"}
+                if isinstance(data, dict) and data.get("status") == "error":
+                    msg = data.get("message", "")
+                    print(f"  [{symbol}] API error: {msg}")
+                    if "credits" in msg.lower() or data.get("code") == 429:
+                        time.sleep(60)  # wait out the per-minute limit, retry
+                        continue
+                    return None
+                values = data.get("values") if isinstance(data, dict) else None
+                if values:
+                    return parse_values(values)
+                print(f"  [{symbol}] no values in response")
+            else:
+                print(f"  [{symbol}] HTTP {r.status_code}")
         except requests.RequestException as e:
-            print(f"  fetch attempt {attempt+1} failed: {e}")
-        time.sleep(2)
+            print(f"  [{symbol}] attempt {attempt+1} failed: {e}")
+        time.sleep(3)
     return None
 
 
-def parse_csv(text):
-    """Parse Stooq daily CSV: Date,Open,High,Low,Close,Volume."""
+def parse_values(values):
+    """Twelve Data values: list of {datetime, open, high, low, close, volume}."""
     rows = []
-    lines = text.strip().splitlines()
-    for line in lines[1:]:  # skip header
-        parts = line.split(",")
-        if len(parts) < 5:
-            continue
+    for v in values:
         try:
-            d = datetime.strptime(parts[0], "%Y-%m-%d").date()
-            close = float(parts[4])
+            d = datetime.strptime(v["datetime"][:10], "%Y-%m-%d").date()
+            close = float(v["close"])
             rows.append((d, close))
-        except (ValueError, IndexError):
+        except (ValueError, KeyError):
             continue
+    rows.sort(key=lambda x: x[0])  # ensure oldest-first
     return rows
 
 
@@ -227,32 +235,48 @@ def compute_current_window(daily, days_ahead=14):
 # ----------------------------------------------------------------------------
 
 def main():
+    if not API_KEY:
+        print("ERROR: TWELVE_DATA_KEY environment variable is not set.")
+        print("Set it as a GitHub Secret named TWELVE_DATA_KEY.")
+        # still write a file so the dashboard shows a clear state
+        with open("seasonality_data.json", "w") as f:
+            json.dump({
+                "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
+                "method": "Twelve Data (API key missing)",
+                "note": "No API key set. Add TWELVE_DATA_KEY as a GitHub Secret.",
+                "errors": WATCHLIST,
+                "tickers": {},
+            }, f, indent=2)
+        raise SystemExit(1)
+
     results = {}
     errors = []
-    for name, sym in WATCHLIST.items():
-        print(f"Fetching {name} ({sym}) ...")
-        hist = fetch_history(sym)
+    for i, name in enumerate(WATCHLIST):
+        print(f"Fetching {name} ...")
+        hist = fetch_history(name)
         if not hist:
             print(f"  [{name}] no data")
             errors.append(name)
-            continue
-        stats = compute_seasonality(hist)
-        if not stats:
-            print(f"  [{name}] insufficient history")
-            errors.append(name)
-            continue
-        stats.pop("_day_buckets", None)  # trim internal field
-        results[name] = stats
-        best_month = max((m for m in stats["monthly"] if m.get("n")),
-                         key=lambda x: x["win_rate"], default=None)
-        if best_month:
-            print(f"  [{name}] best month: {best_month['month']} "
-                  f"({best_month['win_rate']}% green over {best_month['n']}y)")
-        time.sleep(1)
+        else:
+            stats = compute_seasonality(hist)
+            if not stats:
+                print(f"  [{name}] insufficient history")
+                errors.append(name)
+            else:
+                stats.pop("_day_buckets", None)
+                results[name] = stats
+                best_month = max((m for m in stats["monthly"] if m.get("n")),
+                                 key=lambda x: x["win_rate"], default=None)
+                if best_month:
+                    print(f"  [{name}] best month: {best_month['month']} "
+                          f"({best_month['win_rate']}% green over {best_month['n']}y)")
+        # rate-limit spacing: free tier is 8 calls/min. Skip wait after last.
+        if i < len(WATCHLIST) - 1:
+            time.sleep(SECONDS_BETWEEN_CALLS)
 
     output = {
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
-        "method": f"{YEARS_BACK}y daily history from Stooq, close-to-close returns",
+        "method": f"{YEARS_BACK}y daily history from Twelve Data, close-to-close returns",
         "note": "Seasonality is a probabilistic bias, not a signal. Confluence only.",
         "errors": errors,
         "tickers": results,
