@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-06-26 17:59:17 UTC",
+  "generated_utc": "2026-06-27 02:19:34 UTC",
   "method": "20y daily history from Stooq, close-to-close returns",
   "note": "Seasonality is a probabilistic bias, not a signal. Confluence only.",
   "errors": [
