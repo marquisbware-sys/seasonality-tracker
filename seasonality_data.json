@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-21 17:47:26 UTC",
+  "generated_utc": "2026-09-28 19:11:21 UTC",
   "method": "20y daily history from Twelve Data, close-to-close returns",
   "note": "Seasonality is a probabilistic bias, not a signal. Confluence only.",
   "errors": [],
@@ -121,8 +121,8 @@
         {
           "month": "Sep",
           "n": 20,
-          "win_rate": 55.0,
-          "avg_return": -0.91,
+          "win_rate": 50.0,
+          "avg_return": -0.95,
           "best": {
             "year": 2010,
             "ret": 8.4
@@ -177,46 +177,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 21.4,
-          "avg_return": -0.463,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 46.2,
-          "avg_return": -0.417,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 21.4,
-          "avg_return": -0.583,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 42.9,
-          "avg_return": 0.03,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 28.6,
-          "avg_return": -0.036,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 61.5,
-          "avg_return": -0.03,
-          "n": 13
+          "win_rate": 57.1,
+          "avg_return": -0.074,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -245,11 +210,46 @@
           "win_rate": 42.9,
           "avg_return": -0.352,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 76.9,
+          "avg_return": 0.873,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 46.2,
+          "avg_return": -0.22,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 28.6,
+          "avg_return": -0.63,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 50.0,
+          "avg_return": 0.008,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 57.1,
+          "avg_return": -0.407,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "QQQ": {
       "monthly": [
@@ -369,7 +369,7 @@
           "month": "Sep",
           "n": 20,
           "win_rate": 50.0,
-          "avg_return": -0.49,
+          "avg_return": -0.51,
           "best": {
             "year": 2010,
             "ret": 12.9
@@ -424,46 +424,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 50.0,
-          "avg_return": -0.118,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 46.2,
-          "avg_return": -0.593,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 28.6,
-          "avg_return": -0.407,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 57.1,
-          "avg_return": 0.134,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 50.0,
-          "avg_return": -0.027,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 38.5,
-          "avg_return": -0.126,
-          "n": 13
+          "win_rate": 35.7,
+          "avg_return": -0.185,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -492,11 +457,46 @@
           "win_rate": 50.0,
           "avg_return": -0.435,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 69.2,
+          "avg_return": 0.922,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 46.2,
+          "avg_return": -0.09,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 35.7,
+          "avg_return": -0.806,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 57.1,
+          "avg_return": 0.072,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 57.1,
+          "avg_return": -0.062,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "IWM": {
       "monthly": [
@@ -616,7 +616,7 @@
           "month": "Sep",
           "n": 20,
           "win_rate": 50.0,
-          "avg_return": -0.98,
+          "avg_return": -1.07,
           "best": {
             "year": 2010,
             "ret": 12.2
@@ -671,46 +671,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 35.7,
-          "avg_return": -0.661,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 46.2,
-          "avg_return": -0.633,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 21.4,
-          "avg_return": -0.691,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 28.6,
-          "avg_return": -0.353,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 42.9,
-          "avg_return": -0.336,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 61.5,
-          "avg_return": 0.034,
-          "n": 13
+          "win_rate": 57.1,
+          "avg_return": -0.011,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -739,11 +704,46 @@
           "win_rate": 50.0,
           "avg_return": -0.3,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 76.9,
+          "avg_return": 0.978,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 30.8,
+          "avg_return": -0.215,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 28.6,
+          "avg_return": -0.883,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 50.0,
+          "avg_return": -0.052,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 50.0,
+          "avg_return": -0.712,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "DIA": {
       "monthly": [
@@ -863,7 +863,7 @@
           "month": "Sep",
           "n": 20,
           "win_rate": 50.0,
-          "avg_return": -0.46,
+          "avg_return": -0.5,
           "best": {
             "year": 2010,
             "ret": 7.7
@@ -918,46 +918,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 42.9,
-          "avg_return": -0.396,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 38.5,
-          "avg_return": -0.485,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 28.6,
-          "avg_return": -0.484,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 35.7,
-          "avg_return": -0.024,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 42.9,
-          "avg_return": 0.015,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 61.5,
-          "avg_return": 0.026,
-          "n": 13
+          "win_rate": 57.1,
+          "avg_return": -0.018,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -986,11 +951,46 @@
           "win_rate": 35.7,
           "avg_return": -0.318,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 84.6,
+          "avg_return": 0.795,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 46.2,
+          "avg_return": -0.112,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 21.4,
+          "avg_return": -0.547,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 57.1,
+          "avg_return": -0.14,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 57.1,
+          "avg_return": -0.349,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "TSLA": {
       "monthly": [
@@ -1109,8 +1109,8 @@
         {
           "month": "Sep",
           "n": 17,
-          "win_rate": 47.1,
-          "avg_return": 2.26,
+          "win_rate": 41.2,
+          "avg_return": 2.0,
           "best": {
             "year": 2025,
             "ret": 33.2
@@ -1165,46 +1165,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 50.0,
-          "avg_return": -0.379,
-          "n": 12
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 27.3,
-          "avg_return": -2.172,
-          "n": 11
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 58.3,
-          "avg_return": -0.886,
-          "n": 12
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 90.9,
-          "avg_return": 0.924,
-          "n": 11
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 54.5,
-          "avg_return": -0.804,
-          "n": 11
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 54.5,
-          "avg_return": -0.969,
-          "n": 11
+          "win_rate": 50.0,
+          "avg_return": -1.213,
+          "n": 12
         },
         {
           "date": "2026-09-29",
@@ -1233,11 +1198,46 @@
           "win_rate": 45.5,
           "avg_return": -1.385,
           "n": 11
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 36.4,
+          "avg_return": -0.389,
+          "n": 11
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 54.5,
+          "avg_return": 0.206,
+          "n": 11
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 41.7,
+          "avg_return": -1.086,
+          "n": 12
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 45.5,
+          "avg_return": -0.646,
+          "n": 11
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 27.3,
+          "avg_return": -0.697,
+          "n": 11
         }
       ],
       "years_sample": 20,
       "data_start": "2010-06-29",
-      "data_end": "2026-09-21"
+      "data_end": "2026-09-28"
     },
     "NVDA": {
       "monthly": [
@@ -1357,7 +1357,7 @@
           "month": "Sep",
           "n": 20,
           "win_rate": 65.0,
-          "avg_return": 0.7,
+          "avg_return": 0.76,
           "best": {
             "year": 2010,
             "ret": 25.2
@@ -1412,46 +1412,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 64.3,
-          "avg_return": 0.557,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 53.8,
-          "avg_return": -0.598,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 42.9,
-          "avg_return": -0.333,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 64.3,
-          "avg_return": 1.14,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 71.4,
-          "avg_return": 0.474,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 53.8,
-          "avg_return": 0.228,
-          "n": 13
+          "win_rate": 57.1,
+          "avg_return": 0.367,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -1480,11 +1445,46 @@
           "win_rate": 42.9,
           "avg_return": -0.692,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 61.5,
+          "avg_return": 0.993,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 53.8,
+          "avg_return": -0.763,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 42.9,
+          "avg_return": -0.675,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 57.1,
+          "avg_return": 0.376,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 28.6,
+          "avg_return": -0.618,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "AAPL": {
       "monthly": [
@@ -1604,7 +1604,7 @@
           "month": "Sep",
           "n": 20,
           "win_rate": 45.0,
-          "avg_return": -0.73,
+          "avg_return": -0.72,
           "best": {
             "year": 2010,
             "ret": 16.7
@@ -1659,46 +1659,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 50.0,
-          "avg_return": 0.156,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 61.5,
-          "avg_return": -0.149,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 57.1,
-          "avg_return": -0.139,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 57.1,
-          "avg_return": 0.308,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 50.0,
-          "avg_return": 0.29,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 38.5,
-          "avg_return": -0.409,
-          "n": 13
+          "win_rate": 35.7,
+          "avg_return": -0.42,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -1727,11 +1692,46 @@
           "win_rate": 71.4,
           "avg_return": -0.376,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 84.6,
+          "avg_return": 0.961,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 53.8,
+          "avg_return": 0.179,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 50.0,
+          "avg_return": -1.044,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 42.9,
+          "avg_return": 0.276,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 71.4,
+          "avg_return": 0.604,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "MSFT": {
       "monthly": [
@@ -1850,8 +1850,8 @@
         {
           "month": "Sep",
           "n": 20,
-          "win_rate": 50.0,
-          "avg_return": -0.97,
+          "win_rate": 55.0,
+          "avg_return": -0.84,
           "best": {
             "year": 2010,
             "ret": 4.3
@@ -1906,46 +1906,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 57.1,
-          "avg_return": -0.117,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 53.8,
-          "avg_return": -0.07,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 14.3,
-          "avg_return": -0.617,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 64.3,
-          "avg_return": 0.245,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 57.1,
-          "avg_return": 0.186,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 46.2,
-          "avg_return": -0.218,
-          "n": 13
+          "win_rate": 42.9,
+          "avg_return": -0.279,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -1974,11 +1939,46 @@
           "win_rate": 42.9,
           "avg_return": -0.142,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 76.9,
+          "avg_return": 0.846,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 69.2,
+          "avg_return": 0.165,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 35.7,
+          "avg_return": -1.084,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 50.0,
+          "avg_return": 0.293,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 57.1,
+          "avg_return": 0.009,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "AMZN": {
       "monthly": [
@@ -2098,7 +2098,7 @@
           "month": "Sep",
           "n": 20,
           "win_rate": 40.0,
-          "avg_return": 1.38,
+          "avg_return": 1.13,
           "best": {
             "year": 2010,
             "ret": 25.8
@@ -2153,46 +2153,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 42.9,
-          "avg_return": -0.378,
-          "n": 14
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 38.5,
-          "avg_return": -0.463,
-          "n": 13
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 35.7,
-          "avg_return": -1.098,
-          "n": 14
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 57.1,
-          "avg_return": 0.277,
-          "n": 14
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 42.9,
-          "avg_return": 0.12,
-          "n": 14
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 53.8,
-          "avg_return": 0.326,
-          "n": 13
+          "win_rate": 50.0,
+          "avg_return": 0.194,
+          "n": 14
         },
         {
           "date": "2026-09-29",
@@ -2221,11 +2186,46 @@
           "win_rate": 28.6,
           "avg_return": -0.533,
           "n": 14
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 61.5,
+          "avg_return": 0.949,
+          "n": 13
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 46.2,
+          "avg_return": -0.268,
+          "n": 13
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 50.0,
+          "avg_return": -0.878,
+          "n": 14
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 50.0,
+          "avg_return": 0.362,
+          "n": 14
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 64.3,
+          "avg_return": -0.495,
+          "n": 14
         }
       ],
       "years_sample": 20,
-      "data_start": "2006-11-02",
-      "data_end": "2026-09-21"
+      "data_start": "2006-11-09",
+      "data_end": "2026-09-28"
     },
     "META": {
       "monthly": [
@@ -2345,10 +2345,10 @@
           "month": "Sep",
           "n": 15,
           "win_rate": 53.3,
-          "avg_return": 2.72,
+          "avg_return": 2.44,
           "best": {
             "year": 2026,
-            "ret": 29.8
+            "ret": 25.5
           },
           "worst": {
             "year": 2022,
@@ -2400,46 +2400,11 @@
       ],
       "daily_window": [
         {
-          "date": "2026-09-21",
-          "label": "Mon Sep 21",
-          "win_rate": 50.0,
-          "avg_return": 0.727,
-          "n": 10
-        },
-        {
-          "date": "2026-09-22",
-          "label": "Tue Sep 22",
-          "win_rate": 44.4,
-          "avg_return": -0.641,
-          "n": 9
-        },
-        {
-          "date": "2026-09-23",
-          "label": "Wed Sep 23",
-          "win_rate": 40.0,
-          "avg_return": -0.474,
-          "n": 10
-        },
-        {
-          "date": "2026-09-24",
-          "label": "Thu Sep 24",
-          "win_rate": 70.0,
-          "avg_return": -0.431,
-          "n": 10
-        },
-        {
-          "date": "2026-09-25",
-          "label": "Fri Sep 25",
-          "win_rate": 45.5,
-          "avg_return": -0.518,
-          "n": 11
-        },
-        {
           "date": "2026-09-28",
           "label": "Mon Sep 28",
-          "win_rate": 66.7,
-          "avg_return": 0.643,
-          "n": 9
+          "win_rate": 60.0,
+          "avg_return": 0.135,
+          "n": 10
         },
         {
           "date": "2026-09-29",
@@ -2468,11 +2433,46 @@
           "win_rate": 45.5,
           "avg_return": -0.008,
           "n": 11
+        },
+        {
+          "date": "2026-10-05",
+          "label": "Mon Oct 05",
+          "win_rate": 55.6,
+          "avg_return": 0.111,
+          "n": 9
+        },
+        {
+          "date": "2026-10-06",
+          "label": "Tue Oct 06",
+          "win_rate": 77.8,
+          "avg_return": 0.208,
+          "n": 9
+        },
+        {
+          "date": "2026-10-07",
+          "label": "Wed Oct 07",
+          "win_rate": 10.0,
+          "avg_return": -1.113,
+          "n": 10
+        },
+        {
+          "date": "2026-10-08",
+          "label": "Thu Oct 08",
+          "win_rate": 60.0,
+          "avg_return": -0.407,
+          "n": 10
+        },
+        {
+          "date": "2026-10-09",
+          "label": "Fri Oct 09",
+          "win_rate": 63.6,
+          "avg_return": 0.169,
+          "n": 11
         }
       ],
       "years_sample": 20,
       "data_start": "2012-05-18",
-      "data_end": "2026-09-21"
+      "data_end": "2026-09-28"
     }
   }
 }
